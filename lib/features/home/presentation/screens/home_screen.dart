@@ -1,7 +1,7 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mbti/features/auth/auth_provider.dart';
 
 final futureProvider = FutureProvider<int>((ref) {
@@ -21,18 +21,24 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(onPressed: () {
+            ref.read(authControllerProvider.notifier).signOut();
+            }, icon: const Icon(Icons.logout_outlined),),
+        ],
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            try {
-              ref.read(authControllerProvider.notifier).signOut();
-            } catch (e) {
-              log(e.toString());
-            }
-          },
-          child: const Text('로그 아웃'),
-        ),
+      body: Column(
+        children: [
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                // Navigator 정의.
+                context.push('/questions');
+              },
+              child: const Text('테스트 시작'),
+            ),
+          ),
+        ],
       ),
     );
   }
