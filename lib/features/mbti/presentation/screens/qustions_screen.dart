@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mbti/features/common/presentation/widgets/app_error.dart';
 import 'package:mbti/features/mbti/mbti_provider.dart';
+import 'package:mbti/features/mbti/presentation/widgets/question_wdiget.dart';
 
 class QuestionsScreen extends ConsumerWidget {
   QuestionsScreen({super.key});
@@ -32,7 +33,7 @@ class QuestionsScreen extends ConsumerWidget {
                   controller: pageController,
                   itemCount: questions.length,
                   itemBuilder: (context, index) {
-                    return Text(questions[index].description);
+                    return QuestionCard(questionEntity: questions[index], next);
                   },
                   onPageChanged: (value) {
                     ref.read(pageIndexProvider.notifier).state = value + 1;
@@ -49,4 +50,16 @@ class QuestionsScreen extends ConsumerWidget {
       ),
     );
   }
+
+  next(String? type, int? score) {
+    final int nextPage;
+    if (pageController.page != null) {
+      nextPage = pageController.page!.toInt() + 1;
+    } else {
+      nextPage = 0;
+    }
+    pageController.jumpToPage(nextPage);
+    //todo save
+  }
+
 }
