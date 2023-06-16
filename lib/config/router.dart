@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mbti/features/auth/auth_provider.dart';
 import 'package:mbti/features/auth/presentation/screens/auth_screen.dart';
 import 'package:mbti/features/home/presentation/screens/home_screen.dart';
-import 'package:mbti/features/mbti/presentation/screens/details_screen.dart';
+import 'package:mbti/features/mbti/presentation/screens/qustions_screen.dart';
 
 final GoRouter router = GoRouter(
   /// url path 형식의 화면 구조 구성.
@@ -16,9 +16,9 @@ final GoRouter router = GoRouter(
       },
       routes: <RouteBase>[
         GoRoute(
-          path: 'details',
+          path: 'questions',
           builder: (BuildContext context, GoRouterState state) {
-            return const DetailsScreen();
+            return QuestionsScreen();
           },
         ),
       ],
