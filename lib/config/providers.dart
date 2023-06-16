@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mbti/features/auth/auth_provider.dart';
+import 'package:mbti/features/user/user_question_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart' as supabase;
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -46,4 +47,7 @@ Future<void> initializeProviders(ProviderContainer container) async {
 
   /// Auth
   container.read(authControllerProvider);
+
+  /// User
+  container.read(userQuestionUpdateControllerProvider);
 }
