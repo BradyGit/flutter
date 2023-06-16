@@ -19,7 +19,7 @@ class QuestionRepository implements QuestionRepositoryInterface {
     try {
       final data = await client
           .from(_table)
-          .select('*')
+          .select()
           .withConverter(QuestionEntityConverter.toList);
       log('QuestionRepository getQuestions : ${data.toString()}');
       return right(data);

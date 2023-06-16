@@ -7,7 +7,7 @@ class QuestionCard extends ConsumerWidget {
       : super(key: key);
 
   final QuestionEntity questionEntity;
-  final Function(String? type, int? score) next;
+  final Function(WidgetRef ref, QuestionEntity questionEntity, int? score) next;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +40,7 @@ class QuestionCard extends ConsumerWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => next(questionEntity.type, 40),
+                      onPressed: () => next(ref, questionEntity, 40),
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(150, 150),
                           shape: const CircleBorder(),
@@ -50,7 +50,7 @@ class QuestionCard extends ConsumerWidget {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => next(questionEntity.type, 20),
+                      onPressed: () => next(ref, questionEntity, 20),
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(125, 125),
                         shape: const CircleBorder(),
@@ -61,7 +61,7 @@ class QuestionCard extends ConsumerWidget {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => next(null, null),
+                      onPressed: () => next(ref, questionEntity, null),
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(100, 100),
                         shape: const CircleBorder(),
@@ -72,7 +72,7 @@ class QuestionCard extends ConsumerWidget {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => next(questionEntity.type, 20),
+                      onPressed: () => next(ref, questionEntity, 20),
                       style: ElevatedButton.styleFrom(
                         fixedSize: const Size(125, 125),
                         shape: const CircleBorder(),
@@ -83,7 +83,7 @@ class QuestionCard extends ConsumerWidget {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () => next(questionEntity.type, 40),
+                      onPressed: () => next(ref, questionEntity, 40),
                       style: ElevatedButton.styleFrom(
                           fixedSize: const Size(150, 150),
                           shape: const CircleBorder(),
